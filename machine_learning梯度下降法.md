@@ -50,7 +50,7 @@
 
 ​                                          $D_uf(x,y)=A\cdot u=|A|*|u|*cos\alpha$
 
-其中$\alpha​$为方向向量$u​$和梯度向量$A​$的夹角，当且仅当两个向量平行时，即$cos\alpha​$为1时，方向导数的值去最大值，此时方向导数的方向即为梯度的方向，导数的含义时函数单位长度内的增量，那么我们可以知道，在梯度方向上函数增长最快。
+其中$\alpha$为方向向量$u$和梯度向量$A$的夹角，当且仅当两个向量平行时，即$cos\alpha$为1时，方向导数的值去最大值，此时方向导数的方向即为梯度的方向，导数的含义是函数单位长度内的增量，那么我们可以知道，在梯度方向上函数增长最快。函数在一点沿梯度方向的变化率（即增长率）最大，最大值为该梯度的模
 
 ### 2. 批梯度下降法（batch gradient descent）
 
@@ -74,7 +74,7 @@ $J(\theta)=\frac{1}{2}\sum\limits_{i=1}^m(h_\theta(X^{(i)})-y^{(i)})^2$
 
 我们对$J(\theta)$求关于$\theta_j$的偏导，$j=\{0,...n\}$，得到偏导为$\frac{\partial}{\partial\theta_j}J(\theta)$。
 
-在批梯度下降法中，我们从对$\theta$的值的随机初始化开始，即随机初始化一个$\theta$点：$\theta^T=[\theta_0,\theta_1,...,\theta_n]$，在吴恩达的machine learning中将其称为"initial guess"，然后通过不断重复的更改$\theta$的值使得$J(\theta)$的值越来越小，最终达到最小值。其中，$\theta$值的改变遵循如下公式：
+在批梯度下降法中，我们从对$\theta$的值的随机初始化开始，即随机初始化一个$\theta$点：$\theta^T=[\theta_0,\theta_1,...,\theta_n]$，在吴恩达的machine learning中将其称为"initial guess"，然后通过不断重复的更改$\theta$的值使得$J(\theta)$的值越来越小，最终达到最小值。其中，$\theta​$值的改变遵循如下公式：
 
 $\theta_j :=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta)$
 
@@ -82,7 +82,7 @@ $\theta_j :=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta)$
 
 > **注**：我们注意到，在上面的公式中，各个方向的$\theta_j$是**减去**了其对应方向的偏导数值，合起来即减去了梯度值，由于函数在梯度方向上增长最快，我们便向其反方向不断运动，故为**减号**。
 
-我们对$\frac{\partial}{\partial\theta_j}J(\theta)$进行进一步的运算求解可以得到如下的式子：
+我们对$\frac{\partial}{\partial\theta_j}J(\theta)​$进行进一步的运算求解可以得到如下的式子：
 
 $\frac{\partial}{\partial\theta_j}J(\theta) = \frac{\partial}{\partial\theta_j}\frac{1}{2}\sum\limits_{i=1}^m(h_\theta(X^{(i)})-y^{(i)})^2\\ \quad\quad\quad\ =\sum\limits_{i=1}^m2\cdot\frac{1}{2}(h_\theta(X^{(i)})-y^{(i)})\cdot\frac{\partial}{\partial\theta_j}(h_\theta(X^{(i)})-y^{(i)})\\\quad\quad\quad\ =\sum\limits_{i=1}^m(h_\theta(X^{(i)})-y^{(i)})\cdot\frac{\partial}{\partial\theta_j}(h_\theta(X^{(i)})-y^{(i)})\\\quad\quad\quad\ =\sum\limits_{i=1}^m(h_\theta(X^{(i)})-y^{(i)})\cdot x_j^{(i)}$
 
@@ -92,7 +92,7 @@ $\frac{\partial}{\partial\theta_j}J(\theta) = \frac{\partial}{\partial\theta_j}\
 
 $\theta_j :=\theta_j-\alpha\sum\limits_{i=1}^m(h_\theta(X^{(i)})-y^{(i)})\cdot x_j^{(i)}$
 
-通过利用上面的$\theta_j$的update公式，我们可以最终达到$J(\theta)$的最小值，上述的update rule也被称作$LMS\ update\ rule$，即$lease\ mean\ squares$（最小均方）。
+通过利用上面的$\theta_j$的update公式，我们可以最终达到$J(\theta)$的最小值，上述的update rule也被称作$LMS\ update\ rule$，即$lease\ mean\ squares​$（最小均方）。
 
 但是，仔细观察我们便可以发现，每进行一次迭代，我们需要将m个样本的值都带进去进行一次求和（即批梯度下降），我们可以得到批梯度下降的算法如下：
 
@@ -104,7 +104,7 @@ $\theta_j :=\theta_j-\alpha\sum\limits_{i=1}^m(h_\theta(X^{(i)})-y^{(i)})\cdot x
 
 ### 3. 随机梯度下降法（stochastic gradient descent）
 
-在随机梯度下降法中，我们不用每进行一次$\theta_j$值的update必须计算所有样本的值，而是每次只选择其中一个样本的值进行计算，随机梯度下降算法如下所示：
+在随机梯度下降法中，我们不用每进行一次$\theta_j​$值的update必须计算所有样本的值，而是每次只选择其中一个样本的值进行计算，随机梯度下降算法如下所示：
 
 ​                                 $Repeat\ until\ convergence\{\\\quad\quad for\ i=1\ to\ m,\{\\\quad\quad\theta_j=\theta_j-\alpha(h_\theta(X^{(i)})-y^{(i)})\cdot x_j^{(i)}\quad (for\ every\ j)\\\quad\quad\}\\\}$
 
